@@ -1,0 +1,126 @@
+/* src/components/Navbar.css */
+
+/* --- Cài đặt chung --- */
+.navbar {
+  background-color: #0de6df;
+  height: 80px;
+  box-shadow: inset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  width: 100%;
+  max-width: 1300px;
+  padding: 0 24px;
+}
+
+.navbar-logo {
+  color: #fff;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* --- Giao diện Mobile (Mặc định) --- */
+.nav-menu {
+  display: flex;
+  flex-direction: column; /* Hiển thị theo chiều dọc */
+  width: 100%;
+  height: calc(100vh - 80px); /* Chiều cao trừ đi thanh navbar */
+  position: absolute;
+  top: 80px;
+  left: -100%; /* Ẩn menu ra khỏi màn hình */
+  opacity: 1;
+  transition: all 0.5s ease;
+  background-color: #333;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-menu.active {
+  left: 0; /* Hiện menu vào màn hình */
+  opacity: 1;
+  transition: all 0.5s ease;
+  z-index: 1;
+}
+
+.nav-item {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.nav-links {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+.nav-links:hover {
+  background-color: #555;
+  border-radius: 4px;
+  transition: all 0.2s ease-out;
+}
+
+.menu-icon {
+  display: block; /* Hiển thị icon trên mobile */
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+
+/* --- Giao diện Desktop (Sử dụng Media Query) --- */
+@media screen and (min-width: 960px) {
+  .menu-icon {
+    display: none; /* Ẩn icon hamburger trên desktop */
+  }
+
+  .nav-menu {
+    position: static; /* Đưa menu trở lại luồng bình thường */
+    display: flex;
+    flex-direction: row; /* Hiển thị theo chiều ngang */
+    height: auto;
+    width: auto;
+    background-color: transparent;
+    left: 0; /* Reset vị trí */
+  }
+
+  .nav-item {
+    height: 80px;
+  }
+}
+/* Thêm vào cuối file src/components/Navbar.css */
+.theme-toggle-button {
+  background: none;
+  border: none;
+  color: var(--navbar-font-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: 20px; /* Tạo khoảng cách với menu */
+}
+
+/* Ẩn nút toggle bên trong menu mobile khi chưa mở rộng */
+@media screen and (max-width: 960px) {
+  .theme-toggle-button {
+    position: absolute;
+    top: 22px;
+    right: 80px; /* Đặt cạnh icon hamburger */
+  }
+}
